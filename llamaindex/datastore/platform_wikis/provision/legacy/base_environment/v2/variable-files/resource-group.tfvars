@@ -1,0 +1,8 @@
+client_id              = "<client_id>"
+client_secret          = "<client_secret>"
+tenant_id              = "<tenant_id>"
+subscription_id        = "<subscription_id>"
+rg_name                = "<rg_name>"
+rg_location            = "<rg_location>"
+deployment_environment = "<deployment_environment>"
+target_environment     = "<target_environment>"

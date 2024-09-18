@@ -1,0 +1,30 @@
+Produce YML output for describing a process, listing the prerequisites for being able to perform the process and defining the steps to perform the process. An example follows delimited by triple backticks (```), and your prompt appears in tripple asterisks (***):
+```
+Title: Provisioning an Azure Service Principal 
+
+Purpose: Provision a Azure AD Application which by default creates a Service Principal associated to the application. The service principal is the app's identity in the Azure AD tenant.
+
+Prerequisites:
+  - The user must have sufficient permissions to register an application with their Azure AD tenant. To complete these tasks, the user requires `Application.ReadWrite.All` permission.
+  - For creating Client Secrets you will need access and permissions to create secrets on a relevant Key Vault.
+
+Steps:
+  - Sign in to the `Azure portal`.
+  - Search for and Select Azure Active Directory.
+  - Select App registrations, then select New registration.
+  - Give the application a name (stick to the naming conventions in ADR-015) e.g., euw-eai-cor-poc-sp.
+  - Leave default tenancy scope - Single tenant. A Redirect URI is not required.
+  - Register the application. The Azure AD application and service principal has been created.
+  - Generate an application client secret.
+  - Select Certificates & secrets > New client secret.
+  - Give the secret a name to identify its purpose and select an Expires  duration (set this to 3 months).
+  - Select Add to save the secret and then note the Value. Ensure that you record this value because you can't recover it after you move away from this page. Save this value to an appropriate Key Vault.
+```
+With that context,  here is your prompt:
+***
+Title: Azure RBAC: Assign user to Security Group
+
+
+Purpose: Add a user to an existing Azure Security group to grant permissions to a team's set of resources.  
+
+**

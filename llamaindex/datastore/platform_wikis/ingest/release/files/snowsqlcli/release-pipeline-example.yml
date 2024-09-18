@@ -1,0 +1,48 @@
+pool: Default
+
+trigger: none
+
+parameters:
+  - name: deploymentEnvironment
+    displayName: Deployment Environment
+    type: string
+    default: poc1
+    values:
+      - poc1
+      - development
+      - sit
+      - production
+  - name: isInitialRelease # Indicates whether this is the initial release of the ingestion node
+    displayName: Is Initial Release?
+    type: boolean
+    default: false
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: CORE.Utilities/Pipeline.Templates
+
+variables:
+  workingDirectory: <path_to_ingestion_node> # Path to the directory in the repo that contains the ingestion node
+  nodeDisplayName: <node_display_name> # Used to label jobs in Azure DevOps pipeline
+  snowflakeRole: <snowflake_role> # Role for executing SnowSQL scripts
+  snowflakeRoleWithExecuteTask: <snowflake_task_role> # Role for executing created tasks
+  snowflakeWarehouse: <snowflake_warehouse>
+  snowflakeTaskWarehouse: <snowflake_task_warehouse>
+  snowflakeDatabaseName: <snowflake_database_name>
+  snowflakeDatabaseSchemaName: <snowflake_schema_name>
+  externalStageName: <snowflake_external_stage_name>
+  filePattern: <file_pattern> # Pattern for files to ingest from blob storage
+  taskSchedule: <task_schedule> # Schedule for executing tasks created in Snowflake
+  ingestSubfolder: <ingest_subfolder> # Folder containing ingestion SnowSQL scripts 
+  transformSubfolder: <transform_subfolder> # Folder containing transform SnowSQL scripts
+  armServiceConnectionEndpoint: Azure Resource Manager endpoint # Name of the Azure Resource Manager endpoint
+  keyVaultName: <key_vault_name> # Name of the key vault from which to download secrets
+  isDevelopmentDeployment: <0|1> # Flag for whether or not this is a release for a development environment
+
+stages:
+  - template: snowsqlcli-nodes/release.yml@templates
+    parameters:
+      isInitialRelease: ${{ parameters.isInitialRelease }}
+

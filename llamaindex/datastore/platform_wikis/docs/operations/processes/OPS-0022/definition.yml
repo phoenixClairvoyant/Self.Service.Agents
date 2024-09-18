@@ -1,0 +1,27 @@
+
+Title: "Azure DevOps: Add existing user to project team"
+Purpose: "Add a user with an existing Azure user account to an existing Azure DevOps (ADO) project team."
+
+Prerequisites:
+  - "The operator must have sufficient permissions in Azure DevOps to manage project teams and user assignments."
+  - "The operator needs access and permissions to the Azure DevOps organization where the project is located."
+  - "The operator should have the Azure user's email address or username to identify the existing user account."
+  - "The operator should have the name of the project to which the user needs to be added."
+
+Steps:
+  - "Sign in to Azure DevOps using your operator credentials."
+  - "Navigate to the Azure DevOps organization where the project is located."
+  - "Click on the 'Projects' tab to view the list of existing projects."
+  - "Select the desired project from the list where the user needs to be added to the team."
+  - "In the project overview page, navigate to the 'Project settings'."
+  - "In the 'Project settings' page, click on 'Permissions' to manage project permissions."
+  - "In the 'Permissions' page, click on 'Members of [Project Name]' to view existing project members."
+  - "Click on the 'Add' button to add a new member to the project team."
+  - "Enter the email address or username of the existing Azure user account."
+  - "Select the appropriate access level and permissions for the user in the project team."
+  - "Review the member details to ensure correctness."
+  - "Click on the 'Add' button to add the existing user to the project team."
+  - "Inform the user about their addition to the project team and any additional instructions if needed."
+
+Success: "Congratulations! You have successfully added an existing Azure user to the Azure DevOps project team. The user can now collaborate and work on the project with the assigned permissions."
+

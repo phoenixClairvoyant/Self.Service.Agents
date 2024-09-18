@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  <meshnode_name>:
+    container_name: <meshnode_name>
+    # Target docker image to deploy
+    # E.g. `euwpoc1core.azurecr.io/corepoc1_metered_zones:latest`
+    image: <container_registry>/<docker_image_name>:latest 
+    command: "/bin/bash /home/node_scripts/init_enrich_node_databricks.sh"
+    environment:
+      - TF_VAR_workspace_users=${TF_VAR_workspace_users}
+      - TF_VAR_meshnode_name=${TF_VAR_meshnode_name}
+      - CLUSTER_SIZE=${CLUSTER_SIZE}
+      - DATABRICKS_HOST=${DATABRICKS_HOST}
+      - DATABRICKS_TOKEN=${DATABRICKS_TOKEN}
+      - TERRAFORM_CONFIG_RESOURCE_GROUP=${TERRAFORM_CONFIG_RESOURCE_GROUP}
+      - TERRAFORM_CONFIG_STORAGE_ACCOUNT=${TERRAFORM_CONFIG_STORAGE_ACCOUNT}
+      - TERRAFORM_CONFIG_CONTAINER_NAME=${TERRAFORM_CONFIG_CONTAINER_NAME}
+      - TERRAFORM_CONFIG_CLIENT_ID=${TERRAFORM_CONFIG_CLIENT_ID}
+      - TERRAFORM_CONFIG_CLIENT_SECRET=${TERRAFORM_CONFIG_CLIENT_SECRET}
+      - TERRAFORM_CONFIG_TENANT_ID=${TERRAFORM_CONFIG_TENANT_ID}
+      - TERRAFORM_CONFIG_SUBSCRIPTION_ID=${TERRAFORM_CONFIG_SUBSCRIPTION_ID}
+      - SF_VAR_snowflake_account_id=${SF_VAR_snowflake_account_id}
+      - SF_VAR_snowflake_account_username=${SF_VAR_snowflake_account_username}
+      - SF_VAR_snowflake_account_password=${SF_VAR_snowflake_account_password}
+      - SF_VAR_snowflake_role=${SF_VAR_snowflake_role}
+      - DEVELOPMENT=${DEVELOPMENT}
+      - TF_VAR_cluster_size=${TF_VAR_cluster_size}
+      - TF_VAR_key_vault_name=${TF_VAR_key_vault_name}
+      - TF_VAR_key_vault_rg_name=${TF_VAR_key_vault_rg_name}
+
+

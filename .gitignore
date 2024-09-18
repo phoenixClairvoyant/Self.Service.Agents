@@ -1,0 +1,5 @@
+.env
+.streamlit
+*.sqlite
+**/chatgpt/storage
+**/ollama/storage

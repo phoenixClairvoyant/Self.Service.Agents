@@ -1,0 +1,22 @@
+
+Title: "Azure RBAC: Remove user from Security Group"
+Purpose: "Remove a user from an Azure Security group to revoke permissions to a team's set of resources."
+
+Prerequisites:
+  - "The operator must have sufficient permissions to manage Azure Active Directory (Azure AD) and modify group memberships."
+  - "The operator should have knowledge of the Azure Security Group from which the user needs to be removed."
+
+Steps:
+  - "Sign in to the `Azure portal`."
+  - "Search for and select `Azure Active Directory`."
+  - "In the left-hand navigation pane, select `Groups`."
+  - "Locate and select the relevant `Security Group` from which you want to remove the user."
+  - "In the Security Group's overview page, select the `Members` tab."
+  - "Locate the user you want to remove from the Security Group."
+  - "Click on the three-dots (...) next to the user's name."
+  - "Select `Remove member` from the dropdown menu."
+  - "Confirm the removal of the user from the Security Group when prompted."
+  - "Review the members in the 'Members' tab of the Security Group's overview page to verify the user has been removed."
+
+Success: "Congratulations! You have successfully removed the user from the Azure Security Group. The user's permissions have been revoked for the team's set of resources associated with the Security Group."
+

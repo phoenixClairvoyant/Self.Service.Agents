@@ -1,0 +1,34 @@
+pool: Default
+
+trigger: none
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: CORE.Platform/Platform.PipelineTemplates
+
+variables:
+  containerRegistryServiceEndpoint: <containerRegistryServiceEndpoint>
+  armServiceConnectionEndpoint: <armServiceConnectionEndpoint>
+  keyVaultName: <keyVaultName>
+  isFlexibleServer: <isFlexibleServer>
+  apiDirectory: <apiDirectory>
+  databaseServerName: <databaseServerName>
+  resourceGroupName: <resourceGroupName>
+  dbName: <dbName>
+
+stages:
+  - stage: RunDbMigrationsForAPI
+    displayName: "Run Db Migrations For API"
+    jobs:
+      - job: RunMigrations
+        displayName: Run Migrations
+        steps:
+          - template: database/migrate.yml@templates
+            parameters:
+              isFlexibleServer: $(isFlexibleServer)
+              apiDirectory: $(apiDirectory)
+              databaseServerName: $(databaseServerName)
+              resourceGroupName: $(resourceGroupName)
+              dbName: $(dbName)

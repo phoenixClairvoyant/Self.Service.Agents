@@ -1,0 +1,63 @@
+trigger: none
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  armServiceConnectionEndpoint: <armServiceConnectionEndpoint>
+  keyVaultName: <keyVaultName>
+  artifactName: <artifactName>
+  appServiceName: <appServiceName>
+  workingDirectory: <workingDirectory>
+
+stages:
+  - stage: Build
+    displayName: Build Web App
+    jobs:
+    - job: BuildAndPublish
+      displayName: 'Build and Publish'
+      steps:
+        - task: AzureKeyVault@2
+          inputs:
+            connectedServiceName: $(armServiceConnectionEndpoint)
+            keyVaultName: $(keyVaultName)
+            secretsFilter: "*"
+            runAsPreJob: false
+        - script: yarn install
+          workingDirectory: $(System.DefaultWorkingDirectory)/$(workingDirectory)
+          displayName: 'Install Dependencies'
+        - script: yarn build
+          workingDirectory: $(System.DefaultWorkingDirectory)/$(workingDirectory)
+          displayName: 'Build'
+          env:
+            <variableName>: <variableValue>
+        - task: CopyFiles@2
+          displayName: 'Copy Build Output'
+          inputs:
+            sourceFolder: $(System.DefaultWorkingDirectory)/$(workingDirectory)/build/
+            Contents: "**/*"
+            TargetFolder: '$(Build.ArtifactStagingDirectory)'               
+        - task: PublishBuildArtifacts@1
+          displayName: 'Publish to Azure Pipelines'
+          inputs:
+            PathtoPublish: $(Build.ArtifactStagingDirectory)
+            ArtifactName: '$(artifactName)'
+  - stage: Deploy
+    displayName: Deploying Web App
+    jobs:
+    - deployment: 'WebAppDeployment'
+      displayName: 'Web App Deployment'
+      environment: <environment>
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+            - task: AzureRmWebAppDeployment@4
+              displayName: 'Deploy Azure App Service'
+              inputs:
+                azureSubscription: '$(armServiceConnectionEndpoint)'
+                appType: 'webAppLinux'
+                WebAppName: $(appServiceName)
+                packageForLinux: '$(Pipeline.Workspace)/**/$(artifactName)'
+                StartupCommand: 'pm2 serve /home/site/wwwroot --no-daemon --spa'
+                WebConfigParameters: '-Handler iisnode -NodeStartFile server.js -appType node'
+                AppSettings: '-WEBSITE_NODE_DEFAULT_VERSION 16.17.0'

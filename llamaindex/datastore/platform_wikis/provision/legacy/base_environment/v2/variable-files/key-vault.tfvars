@@ -1,0 +1,15 @@
+client_id              = "<client_id>"
+client_secret          = "<client_secret>"
+tenant_id              = "<tenant_id>"
+subscription_id        = "<subscription_id>"
+key_vault_name         = "<key_vault_name>"
+user_ids               = ["<user_object_id>"]
+admin_ids              = ["<admin_user_object_id>"]
+rg_name                = "<rg_name>"
+rg_location            = "<rg_location>"
+location_shorthand     = "<location_shorthand>"
+target_environment     = "<target_environment>"
+deployment_environment = "<deployment_environment>"
+pipeline_object_id     = "<pipeline_object_id>"
+team_name              = "<team_name>"
+use_case               = "<use_case>"

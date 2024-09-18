@@ -1,0 +1,27 @@
+
+Title: "Disable (or delete) AWS IAM user"
+Purpose: "Prevent the AWS IAM user from performing anything on AWS."
+
+Prerequisites:
+  - "The operator must have sufficient permissions in AWS Identity and Access Management (IAM) to modify IAM users."
+  - "The operator needs access and permissions to the AWS Management Console or have the AWS Command Line Interface (CLI) installed and configured."
+  - "The operator needs to identify the correct IAM user that needs to be disabled or deleted."
+
+Steps:
+  - "Sign in to the AWS Management Console or open your terminal with the AWS CLI configured."
+  - "Navigate to the IAM service in the AWS Management Console, or use the AWS CLI command `aws iam` to manage IAM resources."
+  - "In the IAM Dashboard, click on 'Users' in the left-hand navigation pane to view the list of IAM users."
+  - "Search for the IAM user that needs to be disabled or deleted."
+  - "If disabling the user:"
+    - "Click on the IAM user's name to open the IAM user details page."
+    - "In the 'Permissions' tab, click on 'Detach policies' to remove attached policies."
+    - "In the 'Security credentials' tab, click on 'Disable' to deactivate the IAM user's access keys."
+    - "Review the IAM user's details to ensure it has been disabled."
+  - "If deleting the user:"
+    - "In the 'Users' list, select the IAM user's checkbox."
+    - "Click on 'Actions' and choose 'Delete users' from the dropdown menu."
+    - "Confirm the deletion by clicking 'Yes, Delete' when prompted."
+  - "Review the results and verify that the IAM user has been disabled or deleted."
+
+Success: "Congratulations! You have successfully disabled (or deleted) the AWS IAM user. The IAM user will no longer have permissions to perform any actions on AWS services."
+

@@ -1,0 +1,28 @@
+trigger: 
+  batch: true
+  paths:
+    include:
+      - <workingDirectory>
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  workingDirectory: <workingDirectory>
+
+jobs:
+  - job: TestAppAndPublishResults
+    displayName: "Test app and publish test results"
+    steps: 
+      - script: yarn
+        displayName: "Install dependencies"
+        workingDirectory: $(System.DefaultWorkingDirectory)/$(workingDirectory)
+      - script: yarn test
+        displayName: "Run unit tests"
+        workingDirectory: $(System.DefaultWorkingDirectory)/$(workingDirectory)
+      - task: PublishTestResults@2
+        displayName: "Publish test results"
+        inputs:
+          testResultsFormat: JUnit
+          testResultsFiles: $(System.DefaultWorkingDirectory)/$(workingDirectory)/junit.xml
+          failTaskOnFailedTests: true 

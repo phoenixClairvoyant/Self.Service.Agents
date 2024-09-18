@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "self-service-agents"
+version = "0.1.0"
+description = ""
+authors = ["Shephard Marufu <shephard@explore.ai>"]
+readme = "README.md"
+packages = [{include = "self"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+python-dotenv="^1.0.1"
+
+llama-index = "^0.11.4"
+llama-index-core = "^0.11.4"
+llama-index-readers-file = "^0.2.0"
+llama-index-llms-ollama = "^0.3.1"
+llama-index-embeddings-huggingface = "^0.3.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

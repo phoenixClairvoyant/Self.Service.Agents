@@ -1,0 +1,28 @@
+
+Title: "Azure DevOps: Create Project"
+Purpose: "Create an Azure DevOps project when a new team is created. This will include setting up the workspace, creating required teams, assigning expected users to teams, and creating a repo from the repo template."
+
+Prerequisites:
+  - "The operator must have sufficient permissions in Azure DevOps to create projects, manage teams, and repositories."
+  - "The operator needs access and permissions to the Azure DevOps organization where the project will be created."
+  - "The operator should have access to the repo template that will be used to create the initial repository."
+  - "The operator should be provided with the project name."
+
+Steps:
+  - "Sign in to Azure DevOps using your operator credentials."
+  - "Navigate to the Azure DevOps organization where the new project will be created."
+  - "Click on the 'New project' button to create a new project."
+  - "Enter a unique name for the project (e.g., `new-team-project`)."
+  - "Choose the version control system for the project (e.g., Git)."
+  - "Select the process template that aligns with the team's project management methodology."
+  - "Configure optional project settings, such as project visibility, description, and avatar."
+  - "Click on the 'Create' button to create the project."
+  - "Navigate to the 'Project settings' to set up the project workspace and team permissions."
+  - "Create required teams (e.g., `Development`, `Testing`, `Operations`, etc.)."
+  - "Add expected users to the respective teams and assign appropriate permissions."
+  - "Create a new repository from the repo template, or import an existing repository into the project."
+  - "Configure repository settings, such as branch policies, security, and access control."
+  - "Inform the team members about the new project, their team assignments, and repository details."
+
+Success: "Congratulations! You have successfully created an Azure DevOps project for the new team. The project workspace, teams, and repository have been set up, and the team members can now collaborate and work on the project using Azure DevOps."
+

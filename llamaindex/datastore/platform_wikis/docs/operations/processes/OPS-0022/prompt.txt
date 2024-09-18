@@ -1,0 +1,34 @@
+Produce valid YML output for describing a process that an operator should follow, listing the prerequisites for being able to perform the process and defining the steps to perform the process. An example follows delimited by triple backticks (```), and your prompt appears in tripple asterisks (***):
+```
+
+Title: "Create AWS IAM user"
+Purpose: "Create a member user account in the Explore AWS tenant."
+
+Prerequisites:
+  - "The operator must have sufficient permissions in AWS Identity and Access Management (IAM) to create IAM users."
+  - "The operator needs access and permissions to the AWS Management Console or have the AWS Command Line Interface (CLI) installed and configured."
+  - "The operator needs to establish whether the new account will require programmatic access (access key ID and secret access key) and/or AWS Management Console access (password)."
+
+Steps:
+  - "Sign in to the AWS Management Console or open your terminal with the AWS CLI configured."
+  - "Navigate to the IAM service in the AWS Management Console, or use the AWS CLI command `aws iam` to manage IAM resources."
+  - "Choose the option to create a new IAM user."
+  - "Enter a unique username for the new IAM user (e.g., `explore-user`)."
+  - "Choose whether to provide programmatic access (access key ID and secret access key) and/or AWS Management Console access (password)."
+  - "For programmatic access, choose whether to auto-generate an access key or create a custom access key."
+  - "For AWS Management Console access, choose to auto-generate a password or set a custom password."
+  - "Configure optional settings, such as specifying IAM user tags, permissions boundaries, and IAM groups for the user."
+  - "Review the IAM user configuration details."
+  - "Click on the 'Create user' button or use the AWS CLI command to create the IAM user."
+  - "If programmatic access is selected, make sure to record and securely store the IAM user's access key ID and secret access key."
+  - "Inform the IAM user of their credentials and any additional instructions for accessing AWS services."
+
+Success: "Congratulations! You have successfully created an AWS IAM user for the Explore AWS tenant. The IAM user can now use their credentials to access AWS services as per the assigned permissions and access level."
+```
+With that context,  here is your prompt:
+***
+Title: Azure DevOps: Add existing user to project team
+
+Purpose: Add a user with an existing Azure user account to an existing ADO project team
+
+**

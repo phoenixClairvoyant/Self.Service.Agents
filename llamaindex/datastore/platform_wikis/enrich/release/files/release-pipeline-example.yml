@@ -1,0 +1,43 @@
+pool: Default
+
+trigger: none
+
+parameters:
+  - name: clusterSize # Set cluster size for node Databricks Job
+    displayName: Cluster Size
+    type: string
+    default: small
+    values:
+      - small
+      - medium
+      - large
+      - xlarge
+      - xlarge_gpu
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: CORE.Platform/Platform.PipelineTemplates
+
+variables:
+  armServiceConnectionEndpoint: Azure Resource Manager endpoint # Name of the Azure Resource Manager endpoint
+  containerRegistry: <container_registry>
+  keyVaultName: <key_vault_name> # Name of the key vault from which to download secrets
+  keyVaultRgName: <key_vault_rg_name> # Name of the resource group in which the key vault is provisioned
+  workingDirectory: <path_to_enrich_node> # Path to the directory in the repo that contains the enrich node
+  nodeDisplayName: <node_display_name> # Used to label jobs in Azure DevOps pipeline
+  meshnodeName: <meshnode_name> # Name of the node
+  snowflakeRole: <snowflake_role> # Role for creating tables in snowflake
+  developmentDeployment: <0|1> # Flag for whether or not this is a release for a development environment
+  terraformConfigResourceGroup: <resource_group_name> # Resource group that contains storage account for storing Terraform state files
+  terraformConfigStorageAccount: <storage_account_name> # Name of storage account used to store Terraform state files 
+  terraformConfigContainerName: <storage_container_name> # Name of container in storage account used to store Terraform state files
+  terraformConfigKey: <deployment_environment>.<meshnode_name>.tfbackend # Name to use for Terraform state file
+
+stages:
+  - template: enrich-nodes/release.yml@templates
+    parameters:
+      clusterSize: ${{ parameters.clusterSize }}
+      deploymentEnvironment: <deployment_environment>
+

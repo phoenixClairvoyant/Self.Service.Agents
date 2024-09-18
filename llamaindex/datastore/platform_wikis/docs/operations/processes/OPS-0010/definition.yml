@@ -1,0 +1,23 @@
+
+Title: "Azure RBAC: Assign user to Security Group"
+Purpose: "Add a user to an existing Azure Security group to grant permissions to a team's set of resources."
+
+Prerequisites:
+  - "The operator must have sufficient permissions to manage Azure Active Directory (Azure AD) and assign users to groups."
+  - "The operator should have knowledge of the Azure Security Group where the user needs to be added."
+
+Steps:
+  - "Sign in to the `Azure portal`."
+  - "Search for and select `Azure Active Directory`."
+  - "In the left-hand navigation pane, select `Groups`."
+  - "Locate and select the desired `Security Group` to which you want to add the user."
+  - "In the Security Group's overview page, select the `Members` tab."
+  - "Click on the `Add members` button."
+  - "In the 'Add members' dialog, search for and select the user you want to add to the Security Group."
+  - "Click on the `Select` button to add the user to the group."
+  - "(Optional) If you want to add multiple users simultaneously, you can select multiple users in the 'Add members' dialog before clicking the `Select` button."
+  - "After adding the user(s), click on the `Select` button to confirm the addition."
+  - "Review the members added in the 'Members' tab of the Security Group's overview page."
+
+Success: "Congratulations! You have successfully added the user(s) to the Azure Security Group. The user(s) will now have the permissions associated with the Security Group on the team's set of resources."
+
