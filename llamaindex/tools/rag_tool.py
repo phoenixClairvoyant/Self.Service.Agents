@@ -51,45 +51,6 @@ class RagTool(QueryEngineTool):
         list_query_engine = summary_index.as_query_engine(response_mode="tree_summarize", use_async=True)
         vector_query_engine = vector_index.as_query_engine()
         
-        # Feedback
-        context_selection = TruLlama.select_source_nodes().node.text
-        grounded = GroundTruthAgreement(provider=provider)
-        
-        f_qa_relevance = Feedback(
-            provider.relevance_with_cot_reasons,
-            name="Answer Relevance"
-            ).on_input_output()
-        
-        f_qs_relevance = (
-            Feedback(provider.qs_relevance_with_cot_reasons,
-            name="Context Relevance")
-            .on_input()
-            .on(context_selection)
-            .aggregate(np.mean))
-        
-        f_groundedness = (
-            Feedback(grounded.groundedness_measure_with_cot_reasons,
-                    name="Groundedness"
-                    )
-            .on(context_selection)
-            .on_output()
-            .aggregate(grounded.grounded_statements_aggregator))
-        
-        def get_feedback(query_engine):
-            tru_recorder = TruLlama(
-            query_engine,
-            app_id=app_id,
-            feedbacks=[
-                f_qa_relevance,
-                f_qs_relevance,
-                f_groundedness
-            ]
-            )
-            return tru_recorder
-        
-        self.f_qa_relevance = f_qa_relevance
-        self.f_qs_relevance = f_qs_relevance
-        self.f_groundedness = f_groundedness
 
         self.budgetor = QueryEngineTool.from_defaults(
             query_engine,
