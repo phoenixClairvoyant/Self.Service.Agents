@@ -27,8 +27,7 @@ create_implementation_plan:
 
 generate_startup_template:
   description: >
-    Develop a startup template (e.g., Terraform code for Azure resources) based on the
-    implementation plan and organizational standards.
+    Develop a startup template based on the implementation plan and organizational standards. This should be a well-commented, organization-compliant startup template (e.g., Terraform code, etc.)
   expected_output: >
     A well-commented, organization-compliant startup template (e.g., Terraform code)
     ready for deployment or further customization.
