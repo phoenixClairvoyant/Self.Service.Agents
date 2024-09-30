@@ -1,0 +1,27 @@
+python-dotenv
+
+llama-index
+llama-agents 
+llama-index-core
+llama-index-readers-file
+llama-index-llms-ollama
+llama-index-llms-gemini
+llama-index-agent-openai
+llama-index-embeddings-huggingface
+
+trulens
+trulens-apps-llamaindex
+trulens-providers-openai
+openai
+
+trulens-eval
+llama-index-llms-gemini
+trulens-providers-openai
+trulens-apps-llamaindex
+
+llama-deploy[rabbitmq, kafka, redis]==0.1.1
+llama-index-postprocessor-rankgpt-rerank>=0.2.0
+llama-index-vector-stores-qdrant>=0.3.0
+llama-index-llms-openai>=0.2.2
+llama-index-embeddings-openai>=0.2.4
+llama-index-readers-file>=0.2.0

@@ -1,0 +1,33 @@
+include:
+  - path: ./docker-compose-redis.yml
+
+services:
+  qdrant:
+    image: qdrant/qdrant:latest
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+
+  # frontend:
+  #   build:
+  #     context: ./serve
+  #     dockerfile: dockerfile
+  #   environment:
+  #     CONTROL_PLANE_HOST: control_plane
+  #     CONTROL_PLANE_PORT: 8000
+  #   ports:
+  #     - "3000:3000"
+  #     - "9000:8000"
+  #   volumes:
+  #     - ./serve:/app
+  #   depends_on:
+  #     rag_workflow:
+  #       condition: service_started
+  #     agentic_workflow:
+  #       condition: service_started
+
+volumes:
+  qdrant_data:

@@ -1,0 +1,138 @@
+<h2 id="notes-on-hands-on-workshop-of-ingest-nodes">Notes on Hands-on Workshop of ingest nodes</h2>
+<p>These notes should be read in conjunction with the <a href="">session recording</a>.</p>
+<h2 id="agenda">Agenda</h2>
+<ul>
+<li>Review of last session and context setting for this one
+<ul>
+<li><a href="https://dev.azure.com/exploreai/_git/EXPLORE.Retail?path=/docs/data_management/ingest_nodes/overview.html&amp;_a=preview">Previous session</a> was focussed on the “Why”, today we will focus on the “How”.</li>
+</ul></li>
+<li>Build your own standard DBT project: DBT-based ingest node “Dummy Jaffle_<initials>”.</li>
+<li>Addressing the feedback questions</li>
+<li>Demonstrating how to share data with Unity Catalog</li>
+<li>Demo of DBT project with automate_dv DBT macro extension: “Dummy Bridgetown”.</li>
+</ul>
+<p>We will demonstrate aspects of:</p>
+<ul>
+<li>DBT-based ingest node
+<ul>
+<li>best suited for OLAP use case</li>
+<li>can ingest data through <a href="https://docs.getdbt.com/docs/build/seeds"><code>dbt seed</code></a></li>
+<li>can ingest data from cloud storage through <a href="https://learn.microsoft.com/en-us/azure/databricks/ingestion/copy-into/"><code>COPY INTO</code></a> statement</li>
+<li>can model data using <a href="https://docs.getdbt.com/docs/build/models">DBT models</a></li>
+<li>can use macro packages such as automate_dv to simplify data vault building</li>
+</ul></li>
+</ul>
+<h2 id="definitions">Definitions</h2>
+<h2 id="quick-setup-instructions-forosx-mac">Quick setup instructions forOSX (Mac)</h2>
+<p>To get set up: * <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a>. Choose Apple Chip/Intel depending on your Mac and install. * <code>brew install git</code> if you haven’t yet * <code>xcode-select --install</code> if you haven’t installed Xcode command line tools yet (Might take a while to download/install) * Install cookiecutter: run <code>export PATH=$HOME/.local/bin:$PATH</code> and then <code>brew install cookiecutter</code> * For pulling docker images from Azure Container Registry we need to authenticate via the Azure CLI, so <a href="https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-macos">please install</a>: <code>brew update &amp;&amp; brew install azure-cli</code> * Generate Databricks token, in User Settings -&gt; Access Tokens</p>
+<h2 id="cookiecutter-run">Cookiecutter run</h2>
+<ul>
+<li>All of the answers below to the Cookiecutter questions are obtained from ADO and Databricks.</li>
+<li>The ADO config file is something you have to setup in your home directory.</li>
+<li>The ADO config file is only required for the ADO Pipeline automation, at the time when you want to setup the build, release and schedule pipelines.</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">cookiecutter</span> git@ssh.dev.azure.com:v3/exploreai/CORE.Utilities/CORE.Meshnodes.BaseTemplates/ --directory=<span class="st">&quot;ingestnode_dbt&quot;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="ex">ingest_node_name</span> [Ingest Node Template]: dummy_jaffle_kr</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="ex">az_devops_repo</span> [https://dev.azure.com/exploreai/CORE.Utilities/_git/CORE-POC1]: https://dev.azure.com/exploreai/_git/EXPLORE.Retail</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="ex">Select</span> data_substrate:</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="ex">1</span> - databricks</a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="ex">2</span> - postgres</a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="ex">Choose</span> from 1, 2 [1]: 1</a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="ex">databricks_workspace</span> [https://adb-891777510264692.12.azuredatabricks.net/]: https://adb-4472170994427587.7.azuredatabricks.net/</a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="ex">database_host</span> [adb-891777510264692.12.azuredatabricks.net]: adb-4472170994427587.7.azuredatabricks.net</a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="ex">databricks_sql_warehouse_path</span> [/sql/1.0/endpoints/a077556ed384ed67]: /sql/1.0/warehouses/22a85ef04a9a546b</a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="ex">databricks_catalog</span> [null]: dummy_jaffle</a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="ex">database_user</span> [psqladmin]:</a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="ex">database_port</span> [5432]: 443</a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="ex">database_threads</span> [4]: 5</a>
+<a class="sourceLine" id="cb1-15" title="15"><span class="ex">profile_name</span> [data_vault]:</a>
+<a class="sourceLine" id="cb1-16" title="16"><span class="ex">azure_storage_container_url</span> [wasbs://adf-pipeline-demo@datavalidation.blob.core.windows.net/]: wasbs://testdatasets@euweairtlgenpocst.blob.core.windows.net/</a>
+<a class="sourceLine" id="cb1-17" title="17"><span class="ex">ado_pipelines_build_agent_pool_name</span> [CORE Pipelines]: Default</a>
+<a class="sourceLine" id="cb1-18" title="18"><span class="ex">ado_pipelines_folder_name</span> [CORE]: dummy_jaffle</a>
+<a class="sourceLine" id="cb1-19" title="19"><span class="ex">ado_profile_name</span> [CORE]: DEFUALT</a>
+<a class="sourceLine" id="cb1-20" title="20"><span class="ex">scheduled_release_cron</span> [0 6 * * *]:</a>
+<a class="sourceLine" id="cb1-21" title="21"><span class="ex">----------</span></a>
+<a class="sourceLine" id="cb1-22" title="22"><span class="ex">Template</span> clone successful</a>
+<a class="sourceLine" id="cb1-23" title="23"><span class="ex">----------</span></a>
+<a class="sourceLine" id="cb1-24" title="24"></a>
+<a class="sourceLine" id="cb1-25" title="25"><span class="ex">--</span><span class="op">&gt;</span> Attempting to move pipeline definitions to relevant location...</a>
+<a class="sourceLine" id="cb1-26" title="26">         <span class="ex">--</span><span class="op">&gt;</span> Moving files...</a>
+<a class="sourceLine" id="cb1-27" title="27">         <span class="ex">--</span><span class="op">&gt;</span> File move successful.</a>
+<a class="sourceLine" id="cb1-28" title="28"><span class="ex">--</span><span class="op">&gt;</span> Searching for ADO config file in home dir...</a>
+<a class="sourceLine" id="cb1-29" title="29"><span class="ex">?</span> ADO config file detected. Would you like to alter/extend it? No</a>
+<a class="sourceLine" id="cb1-30" title="30"><span class="ex">User</span> declined to modify ADO config file at /home/kerneels/.adocfg. Skipping file generation process...</a>
+<a class="sourceLine" id="cb1-31" title="31"></a>
+<a class="sourceLine" id="cb1-32" title="32"><span class="ex">--</span><span class="op">&gt;</span> Generating <span class="kw">`</span><span class="ex">.env</span><span class="kw">`</span> file from supplied definition file...</a>
+<a class="sourceLine" id="cb1-33" title="33">         <span class="ex">--</span><span class="op">&gt;</span> Generation successful.</a>
+<a class="sourceLine" id="cb1-34" title="34">         <span class="ex">--</span><span class="op">&gt;</span> Please inspect/edit the generated file at <span class="kw">`</span><span class="ex">dummy_jaffle/.env</span><span class="kw">`</span> to ensure that the contents are correct.</a></code></pre></div>
+<h2 id="update-your-.env-file">Update your <code>.env</code> file</h2>
+<ul>
+<li>Set your PAT for <code>ACCESS_TOKEN</code>.</li>
+<li>Set a SAS token as <code>AZURE_SAS_TOKEN</code> if you intend to read from blob storage. Ensure the token has read and list privileges.</li>
+</ul>
+<h2 id="copy-an-existing-dbt-project-to-use-for-now">Copy an existing DBT project to use for now</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">cp</span> -fr dummy_jaffle/src/ dummy_jaffle_<span class="op">&lt;</span>initials<span class="op">&gt;</span>/</a></code></pre></div>
+<h2 id="adjust-the-project-and-model-name-to-match-your-dummy_jaffle_-name-in-the-dbt_project.yml-file">Adjust the project and model name to match your dummy_jaffle_<initials> name in the <code>dbt_project.yml</code> file</h2>
+<ul>
+<li>Find the <code>dbt_project.yml</code> file in <code>dummy_jaffle_&lt;initials&gt;/src/</code> folder.</li>
+<li>Edit it and rename <code>dummy_jaffle</code> to <code>dummy_jaffle_kr</code> to match your new project.</li>
+</ul>
+<h2 id="source-aliases-and-log-into-acr-pull-images">Source aliases and log into ACR, pull images</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="bu">cd</span> dummy_jaffle_<span class="op">&lt;</span>initials<span class="op">&gt;</span>/</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="bu">source</span> .bash_aliases</a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="ex">ingest-acr-login</span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="ex">ingest-pull</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="ex">ingest-build</span></a></code></pre></div>
+<h2 id="check-that-you-are-able-to-connect-to-the-databricks-sql-warehouse">Check that you are able to connect to the Databricks SQL Warehouse</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="ex">ingest-dbsqlcli</span></a></code></pre></div>
+<h2 id="check-that-dbt-debug-succeeds">Check that <code>dbt debug</code> succeeds</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="ex">ingest-debug</span></a></code></pre></div>
+<h2 id="optionally-change-the-log-file-format-to-text-since-we-are-not-pushing-logs-already-and-this-is-more-readable">Optionally change the log file format to TEXT since we are not pushing logs already and this is more readable</h2>
+<p>This is just editing the <code>.env</code> file in place with <code>sed</code>:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="fu">sed</span> -i <span class="st">&#39;s/DBT_LOG_FORMAT=JSON/DBT_LOG_FORMAT=TEXT/g&#39;</span> .env</a></code></pre></div>
+<h2 id="from-here-you-can-try-out-any-of-the-modalities">From here you can try out any of the modalities:</h2>
+<ul>
+<li><code>ingest-seed</code> - to load any seed data via <code>dbt seed</code></li>
+<li><code>ingest-debug</code> - see if everything is setup properly via <code>dbt debug</code></li>
+<li><code>ingest-dbsqlcli</code> - connect to the Databricks Serverless SQL Warehouse or Standard Cluster where you can query using SQL (exit using the keyword <code>exit</code>)</li>
+<li><code>ingest-exec</code> - run the entire DBT project (all models) via <code>dbt run</code></li>
+<li><code>ingest-test</code> - run all the tests via <code>dbt test</code></li>
+<li><code>ingest-docs</code> - generate documentation and serve it on http://localhost:8080/</li>
+<li><code>ingest-cli</code> - enter into the running docker container from where you can issue ANY DBT command</li>
+<li><code>ingest-other</code> - specify variable <code>MODE_SWITCH_OTHER</code> with ANY DBT command you would like to issue</li>
+</ul>
+<h2 id="feedback-questions">Feedback questions</h2>
+<h3 id="how-do-we-specify-the-source-and-sink-tables-for-a-given-transformation">How do we specify the source and sink tables for a given transformation?</h3>
+<ul>
+<li>The smallest unit of a transformation is a DBT model (we will just call it model onwards).</li>
+<li>A model is essentially something that takes data from one or more inputs and produce one output.</li>
+<li>The input data for a model is one of these:
+<ul>
+<li>any existing data already ingested/transformed perhaps by other systems - we call these sources and they are referenced via the <code>{{ source() }}</code> function.
+<ul>
+<li>note that we have to define them in YML files so DBT knows about them</li>
+</ul></li>
+<li>any data ingested via seeds referenced via the <code>{{ ref('model_name') }}</code> function.</li>
+<li>any other model in the DAG referenced via the <code>{{ ref('model_name') }}</code> function.</li>
+</ul></li>
+<li>The output of a model is determined by the type of materialisation configured, and it can be a table or a view.
+<ul>
+<li>We do not explicitly “save” into a table, but let DBT decide when it should persist or not</li>
+</ul></li>
+</ul>
+<h3 id="ar-what-are-some-of-the-best-resources-for-us-to-learn-about-dbt">AR: What are some of the best resources for us to learn about DBT?</h3>
+<ul>
+<li>Given these already but will list them no problem!</li>
+</ul>
+<h3 id="ar-can-we-see-a-simple-example-of-a-simple-data-transformation-from-end-to-end">AR: Can we see a simple example of a simple data transformation from end to end?</h3>
+<h3 id="ar-can-we-expand-on-the-simple-example-by-chaining-two-simple-transformations-together-using-pipelines.">AR: Can we expand on the simple example, by chaining two simple transformations together using pipelines.</h3>
+<h2 id="observability">Observability</h2>
+<ul>
+<li>We can emit logs to Azure Log Analytics Workspace (LAW).</li>
+<li>Ensure all the LAW-related variables are set.</li>
+<li>If some of the LAW-related variables are not set, the system will inform you of this and no logs can be sent.</li>
+<li>The log data <a href="https://portal.azure.com/#@explore.ai/resource/subscriptions/eebe7f14-1dbe-471a-bc1f-5dcf19b89c81/resourceGroups/euw-eai-rtl-poc-rg/providers/Microsoft.OperationalInsights/workspaces/euw-eai-rtl-poc-log/logs">goes here</a>.</li>
+<li>Take a look at <a href="https://portal.azure.com/#@explore.ai/dashboard/arm/subscriptions/eebe7f14-1dbe-471a-bc1f-5dcf19b89c81/resourcegroups/euw-eai-rtl-poc-rg/providers/microsoft.portal/dashboards/9fdb255e-1e6e-43f1-bf16-733a019216a1">this dashboard</a> built off of the data.</li>
+<li>you can alter it and query the log data using KQL.</li>
+</ul>
+<p>These notes should be read in conjunction with the <a href="">session recording</a>.</p>

@@ -1,0 +1,44 @@
+consult_knowledge_base:
+  description: >
+    Search the organization's knowledge base for relevant standards, policies, and tools
+    related to {task}. Compile a comprehensive summary of the findings.
+  expected_output: >
+    A detailed summary of relevant standards, policies, and tools from the organization's
+    knowledge base, including specific references and guidelines.
+  agent: cloud_engineer
+
+research_best_practices:
+  description: >
+    If necessary, conduct additional research on industry best practices and latest
+    developments related to {task}, ensuring alignment with organizational policies.
+  expected_output: >
+    A report on industry best practices and recent developments, highlighting how they
+    align with or complement the organization's existing standards.
+  agent: software_engineer
+
+create_implementation_plan:
+  description: >
+    Based on the knowledge base findings and additional research, create a concise
+    implementation plan and instruction list for {task}.
+  expected_output: >
+    A step-by-step implementation plan and instruction list, tailored to the organization's
+    standards and incorporating industry best practices.
+  agent: cloud_engineer
+
+generate_startup_template:
+  description: >
+    Develop a startup template (e.g., Terraform code for Azure resources) based on the
+    implementation plan and organizational standards.
+  expected_output: >
+    A well-commented, organization-compliant startup template (e.g., Terraform code)
+    ready for deployment or further customization.
+  agent: software_engineer
+
+review_and_optimize:
+  description: >
+    Review the implementation plan and startup template for potential optimizations,
+    security enhancements, and alignment with machine learning best practices if applicable.
+  expected_output: >
+    A detailed review report with specific recommendations for optimizations, security
+    improvements, and ML-specific considerations where relevant.
+  agent: machine_learning_engineer

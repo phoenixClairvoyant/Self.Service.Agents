@@ -1,4 +1,6 @@
-LLM agent improvement:
+The project is a research into the use of Llamaindex & crewAI for the development of an LLM agent application. The goal is to create a scalable and automated way to improve the agent's performance and reasoning capabilities.
+
+The project is still in the early stages and the following are the current capabilities and future steps:
 
 1. Prompt tuning:
     - Example input, input schema.
@@ -12,12 +14,12 @@ LLM agent improvement:
     - Memory tuning
     - Instruction tuning
 5. Multi-agent
-    - Human-in-the-loop
     - Chain of thought
-    - Self-heal
     - Auto-reflection
     - Auto-planning
-  
+
+TODO:
+
 - Use 'lamini' to improve the agent, quantitative analysis, set areas of improvement, scalable and automated.
 - Create an evaluation dataset for the agent.
 - Create a benchmark for the agent.

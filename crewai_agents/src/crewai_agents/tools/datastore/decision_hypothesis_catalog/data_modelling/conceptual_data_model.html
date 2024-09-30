@@ -1,0 +1,174 @@
+<h1 id="conceptual-model">Conceptual Model</h1>
+<p>In defining the conceptual model we need to consider the following elements, in this order of importance:</p>
+<ol type="1">
+<li>Entity classes;</li>
+<li>Relationships between entity classes;</li>
+<li>Attributes of entity classes and relationships, and</li>
+<li>Uniquely defining keys of entity classes and relationships.</li>
+</ol>
+<ul>
+<li>Out of these four elements, Entity classes are the most important and should be captured completely.</li>
+<li>This is not to say that relationships, attributes and keys are unimportant, but it is to be expected that these elements will be completed itteratively.</li>
+<li>Similar to the anecdotal model, a partially completed conceptual model could be parked while we move back and forth between the anecdotal and relativistic models.</li>
+</ul>
+<h2 id="persona-audience">Persona audience</h2>
+<ul>
+<li>Customer-capability</li>
+<li>Intelligence-capability</li>
+</ul>
+<h2 id="questions-that-need-answering">Questions that need answering</h2>
+<p>To build a conceptual data model, we need answers to the following questions:</p>
+<ol type="1">
+<li><strong>Which entity classes are used within the solution:</strong> Identify all the real-world or virtual entities we have to model and in which source data they are found. Some entities might be spread out over multiple sources.</li>
+<li><strong>What attributes are associated with each entity class:</strong> for each entity class modelled, identify the set of attributes we have to track changes for.</li>
+<li><strong>How is uniqueness defined for an entity class:</strong> Identify the attribute(s) that uniquely define each entity class we will be modelling.</li>
+<li><strong>When do attributes of an entity change:</strong> Group attributes into related subsets, taking into account the rate of change such that attributes changing at similar rates are grouped together.</li>
+<li><strong>What relationships and events exist between entities:</strong> For all modelled entity classes, identify all the relationships and events involving more than one entity class.</li>
+<li><strong>What uniquely defines a relationship:</strong> Identify all attributes associated with the relationship or event that are key in defining it.</li>
+<li><strong>What additional attributes are important in relationships:</strong> Make a distinction between those that define the relation and those that represent information that need to be tracked over time.</li>
+</ol>
+<h2 id="example">Example</h2>
+<h3 id="input">Input</h3>
+<p>Based on the anecdotal model (or part of it), we derive the conceptual model.</p>
+<h4 id="entity-classes">Entity classes</h4>
+<ul>
+<li>geographic_region</li>
+<li>geographic_area</li>
+<li>hydraulic_system</li>
+<li>flow_metered_zone</li>
+<li>measurement_tag</li>
+<li>service_reservoir</li>
+</ul>
+<h4 id="relationships-between-entity-classes">Relationships between entity classes</h4>
+<ul>
+<li><strong>network_hierarchy</strong> –&gt; Relating <code>geographic_region</code> to <code>geographic_area</code> to <code>hydraulic_system</code> to <code>flow_metered_zone</code>.</li>
+<li><strong>measurement_tag_measurement_value_link</strong> –&gt; Relating <code>measurement_tag</code> to a specific timestamp and measurement value in time.</li>
+<li><strong>flow_metered_zone_measurement_tag_link</strong> –&gt; Relating <code>flow_metered_zone_measurement_tag_link</code> to <code>measurement_tag</code>.</li>
+<li><strong>service_reservoir_hydraulic_system_link</strong> –&gt; Relating <code>service_reservoir</code> to <code>hydraulic_system</code>.</li>
+</ul>
+<h4 id="attributes-of-entity-classes-and-relationships">Attributes of entity classes and relationships</h4>
+<ul>
+<li>geographic_region
+<ul>
+<li>code</li>
+<li>name</li>
+<li>geography_polygon</li>
+</ul></li>
+<li>geographic_area
+<ul>
+<li>code</li>
+<li>name</li>
+<li>geography_polygon</li>
+</ul></li>
+<li>hydraulic_system
+<ul>
+<li>code</li>
+<li>name</li>
+<li>geography_polygon</li>
+<li>precipitation level</li>
+</ul></li>
+<li>flow_metered_zone
+<ul>
+<li>code</li>
+<li>name</li>
+<li>geography_polygon</li>
+</ul></li>
+<li>measurement_tag
+<ul>
+<li>code</li>
+<li>measurement_type: pressure, flow, volume, precipitation</li>
+<li>description</li>
+<li>engineering_unit</li>
+</ul></li>
+<li>service_reservoir
+<ul>
+<li>code</li>
+<li>name</li>
+</ul></li>
+<li>network_hierarchy
+<ul>
+<li>geographic_region</li>
+<li>geographic_area</li>
+<li>hydraulic_system</li>
+<li>flow_metered_zone</li>
+</ul></li>
+<li>measurement_tag_measurement_value_link
+<ul>
+<li>measurement_tag</li>
+<li>measurement_timestamp</li>
+<li>measurement_value</li>
+</ul></li>
+<li>flow_metered_zone_measurement_tag_link
+<ul>
+<li>flow_metered_zone</li>
+<li>measurement_tag</li>
+<li>directionality</li>
+</ul></li>
+<li>service_reservoir_hydraulic_system_link
+<ul>
+<li>hydraulic_system</li>
+<li>service_reservoir</li>
+</ul></li>
+<li>precipitation_hydraulic_system_link
+<ul>
+<li>hydraulic_system</li>
+<li>measurement_tag</li>
+</ul></li>
+</ul>
+<h4 id="uniquely-defining-keys-of-entity-classes-and-relationships">Uniquely defining keys of entity classes and relationships</h4>
+<ul>
+<li>geographic_region
+<ul>
+<li>code</li>
+</ul></li>
+<li>geographic_area
+<ul>
+<li>code</li>
+</ul></li>
+<li>hydraulic_system
+<ul>
+<li>code</li>
+</ul></li>
+<li>flow_metered_zone
+<ul>
+<li>code</li>
+</ul></li>
+<li>measurement_tag
+<ul>
+<li>code</li>
+</ul></li>
+<li>service_reservoir
+<ul>
+<li>code</li>
+</ul></li>
+<li>network_hierarchy
+<ul>
+<li>geographic_region</li>
+<li>geographic_area</li>
+<li>hydraulic_system</li>
+<li>flow_metered_zone</li>
+</ul></li>
+<li>measurement_tag_measurement_value_link
+<ul>
+<li>measurement_tag</li>
+<li>measurement_timestamp</li>
+<li>measurement_value</li>
+</ul></li>
+<li>flow_metered_zone_measurement_tag_link
+<ul>
+<li>flow_metered_zone</li>
+<li>measurement_tag</li>
+<li>directionality</li>
+</ul></li>
+<li>service_reservoir_hydraulic_system_link
+<ul>
+<li>hydraulic_system</li>
+<li>service_reservoir</li>
+</ul></li>
+</ul>
+<h3 id="output">Output</h3>
+<p>The output data surfaces all of the input data, but adds some additional components, namely, aggregated measurements along the hierarchy levels.</p>
+<h3 id="glossary">Glossary</h3>
+<ul>
+<li>The Entity Relationship Data Model: <a href="https://opentextbc.ca/dbdesign01/chapter/chapter-8-entity-relationship-model/">link</a></li>
+</ul>

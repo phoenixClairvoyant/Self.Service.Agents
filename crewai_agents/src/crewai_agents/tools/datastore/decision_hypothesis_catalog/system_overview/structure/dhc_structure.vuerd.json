@@ -1,0 +1,1119 @@
+{
+  "canvas": {
+    "version": "2.2.11",
+    "width": 2000,
+    "height": 2000,
+    "scrollTop": 0,
+    "scrollLeft": 0,
+    "zoomLevel": 1,
+    "show": {
+      "tableComment": true,
+      "columnComment": true,
+      "columnDataType": true,
+      "columnDefault": true,
+      "columnAutoIncrement": false,
+      "columnPrimaryKey": true,
+      "columnUnique": false,
+      "columnNotNull": true,
+      "relationship": true
+    },
+    "database": "MySQL",
+    "databaseName": "Decision Hypothesis Catalogue",
+    "canvasType": "ERD",
+    "language": "GraphQL",
+    "tableCase": "pascalCase",
+    "columnCase": "camelCase",
+    "highlightTheme": "VS2015",
+    "bracketType": "none",
+    "setting": {
+      "relationshipDataTypeSync": true,
+      "relationshipOptimization": false,
+      "columnOrder": [
+        "columnName",
+        "columnDataType",
+        "columnNotNull",
+        "columnUnique",
+        "columnAutoIncrement",
+        "columnDefault",
+        "columnComment"
+      ]
+    },
+    "pluginSerializationMap": {}
+  },
+  "table": {
+    "tables": [
+      {
+        "name": "Decision Entities",
+        "comment": "",
+        "columns": [
+          {
+            "name": "Domain",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "0bd3c85c-232f-4967-a303-be6a7ff04890"
+          },
+          {
+            "name": "Sub-domain",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 72.09716796875,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "1ac2a6cf-cedf-46a0-957f-81a90b4cb3b6"
+          },
+          {
+            "name": "Decision",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "f47c6a0d-608b-4b77-b7c3-66c80fa99965"
+          },
+          {
+            "name": "Business driver",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 90.8671875,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "9426feca-4afc-411a-9735-35e79ab2f498"
+          },
+          {
+            "name": "Solution",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "36eba20a-4d4a-40d8-ac92-9ef6e2038a53"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 133,
+          "top": 127,
+          "zIndex": 159,
+          "widthName": 98.09716796875,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "79df045e-5d27-4611-9cfc-7a4ff5729aa8"
+      },
+      {
+        "name": "Decision Implementation Record",
+        "comment": "",
+        "columns": [
+          {
+            "name": "Client",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "56ee2261-6fd3-49c5-8c00-d1b342c28427"
+          },
+          {
+            "name": "Use case",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "cba6900d-57e9-491d-9326-888c9af2a95d"
+          },
+          {
+            "name": "Ease of implementation",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 137.8525390625,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "ba525cb5-a91b-4c96-9299-f03d92dca8cc"
+          },
+          {
+            "name": "Technical leads",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 90.88623046875,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "d5549225-50b2-42fa-9c33-83451ddc41ed"
+          },
+          {
+            "name": "Programme leads",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 104.59716796875,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "7f98b450-10b2-4a30-a878-5b942836bfee"
+          },
+          {
+            "name": "State of implementation",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 138.576171875,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "2ddd0eb8-b6a3-44f9-9f44-3bb4f44fe91f"
+          },
+          {
+            "name": "State of acceptance",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 116.91162109375,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "f5db02d1-0404-42a7-a006-250615b33369"
+          },
+          {
+            "name": "Product Demos",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 91.5908203125,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "c052d705-efcd-4d2b-a2ba-87b5bef0faf8"
+          },
+          {
+            "name": "Comments",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 64.84814453125,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "ff9959e3-d90a-41ea-88c9-8df5c8415413"
+          },
+          {
+            "name": "Decision",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "ccf3808c-cf43-420a-8ec2-87d74682a3d6"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 680,
+          "top": 134,
+          "zIndex": 135,
+          "widthName": 189.865234375,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "5917b04c-4fef-4edc-8b86-37c16998d20b"
+      },
+      {
+        "name": "Decision Recommendation Record",
+        "comment": "",
+        "columns": [
+          {
+            "name": "Client",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "c81d054c-dd1f-4e89-a554-82223e69918b"
+          },
+          {
+            "name": "Use case",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "1d832ffd-62ca-4e17-a9ba-059ca5c61936"
+          },
+          {
+            "name": "Recommended decisions",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 147.96435546875,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "db45c3ff-efa4-4369-ad5a-b2f0c5bc7f35"
+          },
+          {
+            "name": "Seleced decisions",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 106.787109375,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "d8ada4f8-9761-4e7e-8278-efbf0b0a9850"
+          },
+          {
+            "name": "Comments",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 64.84814453125,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "372e6ea5-25f2-444d-b9c7-9e05616e5750"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 678,
+          "top": 441,
+          "zIndex": 77,
+          "widthName": 202.87158203125,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "ea39b62a-99db-4f5e-8177-9be3be880049"
+      },
+      {
+        "name": "Solution Entities",
+        "comment": "",
+        "columns": [
+          {
+            "name": "Solution",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": true,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "3735205f-e3c5-429f-a1da-e71f675fb8e4"
+          },
+          {
+            "name": "Related decisions",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 104.6162109375,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "e1f18c01-c49c-4fc2-8db8-1162f9ba1d28"
+          },
+          {
+            "name": "Data sources",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 78.5908203125,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "9db10d33-42be-4749-a51d-29c6b7c69b4f"
+          },
+          {
+            "name": "Related domain components",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 167.48974609375,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "8dd8042e-464d-40ee-997f-c410c3d075f2"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 95,
+          "top": 422,
+          "zIndex": 156,
+          "widthName": 95.2216796875,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "ce306be5-3abe-4591-b9d9-40595411ee0a"
+      },
+      {
+        "name": "Domain Components",
+        "comment": "",
+        "columns": [
+          {
+            "name": "Name ",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "e74bc39b-e0cc-4502-bdcb-2a031cbb1c06"
+          },
+          {
+            "name": "Description",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 67.025390625,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "38f47b64-70c3-4373-8743-34e0f891af26"
+          },
+          {
+            "name": "Component type",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 97.392578125,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "e7c66e36-69be-4d3d-a4c5-4716d4b8de9a"
+          },
+          {
+            "name": "Requires",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "51660a4a-ef02-48f3-999d-10c4dd73b602"
+          },
+          {
+            "name": "Used by",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "2def4d74-d844-4ba2-b7c1-86c9efe6bf11"
+          },
+          {
+            "name": "Related decisions",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 104.6162109375,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "bebd3a55-a27b-4918-ad01-80f9054aa514"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 680,
+          "top": 667,
+          "zIndex": 104,
+          "widthName": 124.1162109375,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "f1f79cbf-ee94-4148-87b9-cb25148a4674"
+      },
+      {
+        "name": "Data sources",
+        "comment": "",
+        "columns": [
+          {
+            "name": "Name",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "54a309b8-77fd-4bcc-8a39-60d67b648efb"
+          },
+          {
+            "name": "Description",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 67.025390625,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "8f8b4fd5-dd64-48f0-9eff-73319d098226"
+          },
+          {
+            "name": "Solution",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "9bb4735b-0042-4c92-b1d8-cb7ae17d7887"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 146,
+          "top": 717,
+          "zIndex": 158,
+          "widthName": 78.5908203125,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "92c6188f-7644-4b9d-8ba8-f2cb23e26d76"
+      },
+      {
+        "name": "Decision Actors",
+        "comment": "",
+        "columns": [
+          {
+            "name": "Role",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "e65019eb-3a50-4a52-808e-66afc81db308"
+          },
+          {
+            "name": "Responsible for",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 92.3271484375,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "e5ef9dee-1076-4875-9b0e-c1023d71e1ef"
+          },
+          {
+            "name": "Accountable for",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 92.33349609375,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "9b6ad3e0-53da-4615-8057-261ff65eedf0"
+          },
+          {
+            "name": "Consulted on",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 78.60986328125,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "232e1566-0ef2-4352-8598-103bbc64668b"
+          },
+          {
+            "name": "Informed of",
+            "comment": "",
+            "dataType": "",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 67.75537109375,
+              "widthComment": 60,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "c33019a8-2677-431a-8b91-14d1960252f4"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 1150,
+          "top": 276,
+          "zIndex": 115,
+          "widthName": 92.30810546875,
+          "widthComment": 60
+        },
+        "visible": true,
+        "id": "4f71a5e0-b0ce-40fd-ae19-1a4b67e48c73"
+      }
+    ],
+    "indexes": []
+  },
+  "memo": {
+    "memos": []
+  },
+  "relationship": {
+    "relationships": [
+      {
+        "identification": false,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "79df045e-5d27-4611-9cfc-7a4ff5729aa8",
+          "columnIds": [
+            "f47c6a0d-608b-4b77-b7c3-66c80fa99965"
+          ],
+          "x": 510.8671875,
+          "y": 212.75,
+          "direction": "right"
+        },
+        "end": {
+          "tableId": "5917b04c-4fef-4edc-8b86-37c16998d20b",
+          "columnIds": [
+            "ccf3808c-cf43-420a-8ec2-87d74682a3d6"
+          ],
+          "x": 680,
+          "y": 271,
+          "direction": "left"
+        },
+        "constraintName": "fk_decision entities_to_decision implementation record",
+        "visible": true,
+        "id": "bd9d90e2-dbd0-4db4-8102-36e4ba428219"
+      },
+      {
+        "identification": false,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "ce306be5-3abe-4591-b9d9-40595411ee0a",
+          "columnIds": [
+            "3735205f-e3c5-429f-a1da-e71f675fb8e4"
+          ],
+          "x": 322.244873046875,
+          "y": 422,
+          "direction": "top"
+        },
+        "end": {
+          "tableId": "79df045e-5d27-4611-9cfc-7a4ff5729aa8",
+          "columnIds": [
+            "36eba20a-4d4a-40d8-ac92-9ef6e2038a53"
+          ],
+          "x": 321.93359375,
+          "y": 298.5,
+          "direction": "bottom"
+        },
+        "constraintName": "fk_solution entities_to_decision entities",
+        "visible": true,
+        "id": "5a18d22f-ff6e-4ec4-b60a-e25956c2b7e8"
+      },
+      {
+        "identification": false,
+        "relationshipType": "OneN",
+        "startRelationshipType": "Dash",
+        "start": {
+          "tableId": "ce306be5-3abe-4591-b9d9-40595411ee0a",
+          "columnIds": [
+            "3735205f-e3c5-429f-a1da-e71f675fb8e4"
+          ],
+          "x": 322.244873046875,
+          "y": 573,
+          "direction": "bottom"
+        },
+        "end": {
+          "tableId": "92c6188f-7644-4b9d-8ba8-f2cb23e26d76",
+          "columnIds": [
+            "9bb4735b-0042-4c92-b1d8-cb7ae17d7887"
+          ],
+          "x": 323.0126953125,
+          "y": 717,
+          "direction": "top"
+        },
+        "constraintName": "fk_solution entities_to_data sources",
+        "visible": true,
+        "id": "ff9fbf20-c232-4b3f-8c16-4773ac3f10c6"
+      }
+    ]
+  }
+}

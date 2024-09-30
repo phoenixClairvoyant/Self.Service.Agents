@@ -1,0 +1,133 @@
+<h1 id="relativistic-model">Relativistic model</h1>
+<ul>
+<li>Since this model deals with temporal, spacial, historical, granularity and the <em>Five V’s</em> of big data, we name this model the relativistic model.</li>
+<li>We introduce the relativistic model to give ample thought space towards big data related concerns and requirements - something not traditionally dealt with in data modelling exercises.</li>
+</ul>
+<h2 id="five-vs-of-big-data">Five V’s of Big Data</h2>
+<p>The “Five V’s” is a helpful framework for ensuring that we think about all the relativistic aspects of the data we are modelling. It is not essential that we say something about each of the Five V’s, but it is crucial that we speak of temporal, spacial, historicity, granularity and positioning on the stream-batch continuum for as much of the data as possible. <strong>The “Five V’s” are</strong>:</p>
+<ul>
+<li><strong>Volume</strong> referring to the amount or quantity of data for each entity and relationship, along with their attributes;</li>
+<li><strong>Velocity</strong> referring to the speed at which data is generated, transmitted and received or delivered;</li>
+<li><strong>Variety</strong> referring to the diversity among sources of data;</li>
+<li><strong>Veracity</strong> referring to the quality and accuracy, completeness and overall level of trust in the data, and</li>
+<li><strong>Value</strong> referring to the degree of utility obtainable from the data, and in our context, to what degree the data enables decision making.</li>
+</ul>
+<h2 id="stream-batch-continuum">Stream-batch continuum</h2>
+<p>Another useful backdrop for framing relativistic-related aspects of the data is the stream-batch continuum.</p>
+<p>The stream-batch continuum can be described as a one dimensional line, with instantaneous real-time at the one extreme, and infinitely batched or delayed delivery at the other. It is hypothesised that all data resides somewhere along the stream-batch continuum.</p>
+<h2 id="historicity">Historicity</h2>
+<p>How accurate and relevant is historical data, and how much historical data is required in order to drive the decision hypothesis.</p>
+<h2 id="granularity">Granularity</h2>
+<p>What resolution is a particular data source available in, or how finely-grained do we require the data to be in order to satisfy the decision.</p>
+<h2 id="reasons-if-possible">Reasons if possible</h2>
+<p>In specifying the various relativistic aspects of the data required in order to enable the decision hypothesis, we try at all times to provide reasons for each.</p>
+<h2 id="requirement-vs-inherent-attribute">Requirement vs inherent attribute</h2>
+<p>The relativistic elements of the data model is a mix between requirements and inherent attributes of the data. Sometimes, a relativistic attribute of the data is not exactly a requirement, but simply an attribute of the data. Other times, a hard requirement exists, and it is helpful to highlight these sooner rather than later.</p>
+<h2 id="persona-audience">Persona audience</h2>
+<ul>
+<li>Customer-capability</li>
+<li>Technical-capability</li>
+</ul>
+<h2 id="example">Example</h2>
+<h3 id="input">Input</h3>
+<h4 id="five-vs">Five V’s</h4>
+<ul>
+<li>Because the data relating to the network hierarchy, the list of measurement tags, and the list of service reservoirs are all defined in a flat file, we will treat them together here.</li>
+<li>We will term this data “configuration data”.</li>
+<li>The time series measurement values of pressure, flow and reservoir volume we will term “telemetry data”.</li>
+<li>The precipitation data, which have historic, current and forecast components per day per hydraulic system we will term “environmental measurements”.</li>
+</ul>
+<h5 id="configuration-data">Configuration data</h5>
+<h6 id="volume">Volume</h6>
+<ul>
+<li>Configuration data volume requirements are very low, being in the order of tens of megabytes or tens of thousands of individual entities.</li>
+<li>The volume requirements on configuration data is low because the physical network is bounded and grows very slowly over time.</li>
+</ul>
+<h6 id="velocity">Velocity</h6>
+<ul>
+<li>Configuration data velocity requirements are very low, and this type of data is expected to change at most daily, more realistically no more than weekly or even monthly.</li>
+<li>Some aspects of configuration data might never change, or at most quarterly.</li>
+<li>The low velocity of configuration data is due to the slow growth and very conservative modification of the network.</li>
+</ul>
+<h6 id="variety">Variety</h6>
+<ul>
+<li>Even though configuration data is all flat file defined, the variety of ways in which the same data is represented takes on a diverse number of forms.</li>
+<li>This is especially true for relationships among the various entities.</li>
+<li>There are many variations of configuration data, which pose a challenge, and presents a risk.</li>
+<li>The variety requirement of the data is therefore relatively high for this system.</li>
+</ul>
+<h6 id="veracity">Veracity</h6>
+<ul>
+<li>There is a low level of trust in the configuration data due to the poor quality, low accuracy and incompleteness of the data.</li>
+<li>This is primarily due to the flat file format (Excel) and the human-in-the-loop business process that produce the data.</li>
+</ul>
+<h6 id="value">Value</h6>
+<ul>
+<li>The value that can be derived from the configuration data is significant such that it trumps the other negative V’s.</li>
+</ul>
+<h5 id="telemetry-data">Telemetry data</h5>
+<h6 id="volume-1">Volume</h6>
+<ul>
+<li>The volume of the telemetry data is much higher than the configuration data.</li>
+<li>Telemetry data consists of tens of thousands of data points, delivered every 15 minutes.</li>
+<li>There also exists historical telemetry data for multiple years, which greatly increase the overall volume.</li>
+</ul>
+<h6 id="velocity-1">Velocity</h6>
+<ul>
+<li>Telemetry data needs to be produced every 15 minutes for each measurement tag.</li>
+<li>The 15-minute granularity requirement exists due to the need of the system to surface state that is no more than 30 minutes delayed.</li>
+</ul>
+<h6 id="variety-1">Variety</h6>
+<ul>
+<li>Because there are only effectively three types of measurement tags: pressure, flow and reservoir volume, the variety is low.</li>
+<li>in addition, since these are engineering measurements, the possible range that values may assume are well-known in advance.</li>
+</ul>
+<h6 id="veracity-1">Veracity</h6>
+<ul>
+<li>The telemetry data is highly trusted because it is entirely machine-generated.</li>
+<li>Because the data is machine-generated, it is highly predictable, and erroneous data is easily identified.</li>
+</ul>
+<h6 id="value-1">Value</h6>
+<ul>
+<li>Telemetry data is highly valued since it enables machine learning and predictive modelling.</li>
+</ul>
+<h5 id="environmental-measurements">Environmental measurements</h5>
+<h6 id="volume-2">Volume</h6>
+<ul>
+<li>Since precipitation measurements are historic, current and 7-days into the future, for all hydraulic systems, the overall volume of data can be relatively large.</li>
+</ul>
+<h6 id="velocity-2">Velocity</h6>
+<ul>
+<li>Measurements are per 5 minutes, per hydraulic system.</li>
+</ul>
+<h6 id="variety-2">Variety</h6>
+<ul>
+<li>The precipitation measurements value ranges are well-known in advance, so it is not varied.</li>
+</ul>
+<h6 id="veracity-2">Veracity</h6>
+<ul>
+<li>The precipitation measurements are obtained from a third-party service and are highly tursted.</li>
+</ul>
+<h6 id="value-2">Value</h6>
+<ul>
+<li>Because the precipitation measurements play a significant role in supply and demand, the value of this data is relatively high.</li>
+</ul>
+<h4 id="stream-batch-continuum-1">Stream-batch continuum</h4>
+<ul>
+<li>Configuration data is highly batched, and changes are very rare.</li>
+<li>Telemetry data is highly stream-oriented and constantly change.</li>
+<li>Precipitation measurements are highly stream-oriented but do not change frequently in the course of a day.</li>
+</ul>
+<h4 id="granularity-1">Granularity</h4>
+<ul>
+<li>Configuration data is granular enough to identify each entity uniquely.</li>
+<li>Telemetry data has a granularity of at most one value per measurement tag every 15 minutes, but it can be fewer for some tag types.</li>
+<li>Precipitation measurement have a granularity of one measurement per hydraulic system at most every 5 minutes.</li>
+</ul>
+<h4 id="historicity-1">Historicity</h4>
+<ul>
+<li>Configuration data has a low historicity requirement because there does not exist historic records for past configurations.</li>
+<li>Telemetry data has a relatively high requirement in terms of historicity becausethe data is used for training a ML model.</li>
+<li>Precipitation measurements have very accurate historic data used in the ML model training, so the historicity requirement is high.</li>
+</ul>
+<h3 id="output">Output</h3>
