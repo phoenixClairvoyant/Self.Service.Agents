@@ -11,6 +11,7 @@ llama-index-postprocessor-rankgpt-rerank = ">=0.2.0"
 llama-index-vector-stores-qdrant = ">=0.3.0"
 llama-index-core = ">=0.11.14"
 llama-index = "0.11.14"
+reflex = "0.5.10"
 
 [tool.poetry.scripts]
 crewai_agents = "crewai_agents.main:run"

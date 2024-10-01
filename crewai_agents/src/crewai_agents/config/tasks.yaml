@@ -1,10 +1,10 @@
 consult_knowledge_base:
   description: >
-    Search the organization's knowledge base for relevant standards, policies, and tools
-    related to {task}. Compile a comprehensive summary of the findings.
+    Retrieve and summarize company-specific standards, policies, and tools for {task}
+    from the organization's knowledge base. Strict adherence to company guidelines is mandatory.
   expected_output: >
-    A detailed summary of relevant standards, policies, and tools from the organization's
-    knowledge base, including specific references and guidelines.
+    Concise summary of applicable company standards, policies, and tools, with exact
+    references. No deviations from official guidelines are permitted.
   agent: cloud_engineer
 
 research_best_practices:
@@ -27,10 +27,13 @@ create_implementation_plan:
 
 generate_startup_template:
   description: >
-    Develop a startup template based on the implementation plan and organizational standards. This should be a well-commented, organization-compliant startup template (e.g., Terraform code, etc.)
+    Create a task-specific startup template based on the implementation plan and
+    organizational standards. The format should be appropriate for {task}, which may
+    include code (e.g., Terraform, python, typesctipt e.t.c), configuration files, or text instructions.
   expected_output: >
-    A well-commented, organization-compliant startup template (e.g., Terraform code)
-    ready for deployment or further customization.
+    A well-documented, organization-compliant startup template tailored to {task}.
+    This could be code, configuration, or detailed text instructions, as appropriate
+    for the specific task requirements.
   agent: software_engineer
 
 review_and_optimize:
