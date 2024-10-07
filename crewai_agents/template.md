@@ -1,59 +1,69 @@
+### Task-Specific Startup Template for Azure Resource Group Provisioning
+
+This startup template includes all necessary components for provisioning an Azure Resource Group using Terraform, adhering to organizational standards.
+
+#### Directory Structure
+```
+/terraform
+  ├── modules
+  │   └── resource_group
+  │       └── main.tf
+  ├── main.tf
+  ├── variables.tf
+  └── outputs.tf
+```
+
+---
+
+#### 1. `modules/resource_group/main.tf`
 ```hcl
-provider "azurerm" {
-  features {}
-}
+resource "azurerm_resource_group" "main" {
+  name     = var.resource_group_name
+  location = var.location
 
-resource "azurerm_resource_group" "example" {
-  name     = "example-resources"
-  location = "East US"
-}
-
-resource "azurerm_app_service_plan" "example" {
-  name                = "example-app-service-plan"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
-  sku {
-    tier     = "Standard"
-    size     = "S1"
-    capacity = 1
+  tags = {
+    Environment = var.environment
+    Team        = var.team
+    Project     = var.project
   }
-}
-
-resource "azurerm_web_app" "example" {
-  name                = "example-web-app-${substr(random_string.example.result, 0, 8)}"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
-  app_service_plan_id = azurerm_app_service_plan.example.id
-  https_only          = true
-
-  app_settings = {
-    "WEBSITE_NODE_DEFAULT_VERSION" = "14"
-    "APPLICATIONINSIGHTS_INSTRUMENTATIONKEY" = var.app_insights_instrumentation_key
-  }
-}
-
-resource "azurerm_storage_account" "example" {
-  name                     = "examplestoracc"
-  resource_group_name      = azurerm_resource_group.example.name
-  location                 = azurerm_resource_group.example.location
-  account_tier            = "Standard"
-  account_replication_type = "LRS"
-}
-
-resource "random_string" "example" {
-  length  = 10
-  special = false
-}
-
-output "web_app_url" {
-  value = azurerm_web_app.example.default_site_hostname
 }
 ```
 
-This Terraform template defines:
-- An Azure Resource Group that serves as the container for the other resources.
-- An App Service Plan to host the web application.
-- A Web App configured to run a Node.js application with Application Insights integration.
-- A Storage Account for persistent storage needs.
+#### 2. `variables.tf`
+```hcl
+variable "resource_group_name" {
+  description = "The name of the Resource Group"
+  type        = string
+}
 
-This template reflects the company's data management standards and deployment procedures by utilizing Infrastructure as Code principles, ensuring that deployments are consistent, repeatable, and can operate across different environments without being locked into a particular cloud vendor. Adjustments can be made based on any additional specific requirements from the organizational standards.
+variable "location" {
+  description = "The Azure Region where the Resource Group will be created"
+  type        = string
+}
+
+variable "environment" {
+  description = "The environment (e.g., dev, prod)"
+  type        = string
+}
+
+variable "team" {
+  description = "The team responsible for the Resource Group"
+  type        = string
+}
+
+variable "project" {
+  description = "The project associated with the Resource Group"
+  type        = string
+}
+```
+
+#### 3. `outputs.tf`
+```hcl
+output "resource_group_id" {
+  description = "The ID of the Resource Group"
+  value       = azurerm_resource_group.main.id
+}
+```
+
+### Conclusion
+By following this organized structure and utilizing the provided Terraform configuration files, the provisioning of an Azure Resource Group will comply with organizational standards and best practices for infrastructure-as-code.
